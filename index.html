@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern Contact Management System to organize and manage your contacts.">
+    <title>ContactHub | Contact Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="app-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-icon">✦</span>
+            <h2>ContactHub</h2>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-label">MENU</p>
+            <a href="#" class="nav-item active">▦ <span>All Contacts</span></a>
+            <a href="#" class="nav-item">★ <span>Favorites</span></a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>CONTACT MANAGEMENT</p>
+            <span>Organize your connections.</span>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>My Contacts</h1>
+                <p>Manage and organize your connections.</p>
+            </div>
+
+            <button class="add-contact-btn" id="addContactBtn">
+                + Add Contact
+            </button>
+        </header>
+
+        <!-- Statistics -->
+        <section class="stats-container">
+            <div class="stat-card">
+                <span class="stat-icon">👥</span>
+                <div>
+                    <p>Total Contacts</p>
+                    <h2 id="totalContacts">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">⭐</span>
+                <div>
+                    <p>Favorites</p>
+                    <h2 id="favoriteContacts">0</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <section class="contacts-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>All Contacts</h2>
+                    <p>Your saved contacts in one place.</p>
+                </div>
+            </div>
+
+            <!-- Import / Export Buttons -->
+            <div class="data-actions">
+                <button type="button" id="exportBtn">
+                    📤 Export JSON
+                </button>
+
+                <button type="button" id="importBtn">
+                    📥 Import JSON
+                </button>
+
+                <input
+                    type="file"
+                    id="importFile"
+                    accept=".json,application/json"
+                    hidden
+                >
+            </div>
+
+            <!-- Search -->
+            <div class="search-container">
+                <span>⌕</span>
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search by name, email or phone..."
+                >
+            </div>
+
+            <!-- Contact Gallery -->
+            <div class="contacts-grid" id="contactsGrid">
+                <!-- JavaScript renders contacts here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">👤</div>
+                <h3>No contacts yet</h3>
+                <p>Add your first contact to get started.</p>
+                <button class="add-contact-btn" id="emptyAddBtn">
+                    + Add Your First Contact
+                </button>
+            </div>
+
+        </section>
+    </main>
+</div>
+
+<!-- Contact Modal -->
+<div class="modal-overlay" id="contactModal">
+    <div class="modal">
+
+        <div class="modal-header">
+            <div>
+                <h2 id="modalTitle">Add New Contact</h2>
+                <p>Enter the contact information below.</p>
+            </div>
+
+            <button class="close-btn" id="closeModalBtn">&times;</button>
+        </div>
+
+        <form id="contactForm">
+
+            <input type="hidden" id="contactId">
+
+            <label for="contactName">Full Name *</label>
+            <input type="text" id="contactName" placeholder="Enter full name" required>
+
+            <label for="contactEmail">Email Address *</label>
+            <input type="email" id="contactEmail" placeholder="Enter email address" required>
+
+            <label for="contactPhone">Phone Number *</label>
+            <input type="tel" id="contactPhone" placeholder="Enter phone number" required>
+
+            <label for="contactCompany">Company</label>
+            <input type="text" id="contactCompany" placeholder="Enter company name">
+
+            <label for="contactAddress">Address</label>
+            <textarea id="contactAddress" placeholder="Enter address"></textarea>
+
+            <label class="favorite-label">
+                <input type="checkbox" id="contactFavorite">
+                Add to Favorites
+            </label>
+
+            <div class="modal-actions">
+                <button type="button" class="cancel-btn" id="cancelBtn">
+                    Cancel
+                </button>
+
+                <button type="submit" class="save-btn">
+                    Save Contact
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
